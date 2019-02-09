@@ -17,10 +17,12 @@ import { User } from '../../interfaces/user';
 })
 export class HomePage {
 
+	users: User[]; //Instancio mi variable de usuario para poder que sea alcanzable por todo el scope
+
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 
 		//Creo un usuario con la interfaz User
-		let myUser: User = {
+		let user1: User = {
 			nick : 'Juan Pablo',
 			age: 24,
 			email: 'juanpchica@hotmail.com',
@@ -28,12 +30,40 @@ export class HomePage {
 			uid:1
 		}
 
-		//Creo un arreglo de tipo User
-		let users: User[] = [
-			myUser,
-			myUser
-		];
+		let user2: User = {
+			nick : 'Luis Felipe',
+			age: 27,
+			email: 'pipe@hotmail.com',
+			friend: true,
+			uid:2
+		}
 
+		let user3: User = {
+			nick : 'Nicolas',
+			age: 10,
+			email: 'nico@hotmail.com',
+			friend: false,
+			uid:3
+		}
+
+		let user4: User = {
+			nick : 'Fernando',
+			age:52,
+			email: 'fernando@hotmail.com',
+			friend: true,
+			uid:4
+		}
+
+		let user5: User = {
+			nick : 'Martha',
+			age: 45,
+			email: 'martha@hotmail.com',
+			friend: false,
+			uid:5
+		}
+
+		//Creo un arreglo con todos los usuarios
+		this.users = [user1,user2,user3,user4,user5];
 	}
 
 	ionViewDidLoad() {

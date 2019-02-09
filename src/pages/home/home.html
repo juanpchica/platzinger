@@ -13,7 +13,7 @@
 		</button>
 
 		<ion-title>
-			Home
+			Mis Contactos
 		</ion-title>
 
 	</ion-navbar>
@@ -22,5 +22,17 @@
 
 
 <ion-content padding>
+	<ion-list>
+		<ion-list-header><strong>Amigos</strong></ion-list-header>
+		<div *ngFor="let user of users">
+			<ion-item *ngIf="user.friend">{{user.nick}}</ion-item>			
+		</div>
+	</ion-list>
 
+	<ion-list>
+		<ion-list-header><strong>No Amigos</strong></ion-list-header>
+		<div *ngFor="let user of users">
+			<ion-item *ngIf="!user.friend">{{user.nick}}</ion-item>			
+		</div>
+	</ion-list>
 </ion-content>
