@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { User } from '../../interfaces/user';
+
 /**
  * Generated class for the HomePage page.
  *
@@ -15,11 +17,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
+		//Creo un usuario con la interfaz User
+		let myUser: User = {
+			nick : 'Juan Pablo',
+			age: 24,
+			email: 'juanpchica@hotmail.com',
+			friend: true,
+			uid:1
+		}
+
+		//Creo un arreglo de tipo User
+		let users: User[] = [
+			myUser,
+			myUser
+		];
+
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad HomePage');
+	}
 
 }
