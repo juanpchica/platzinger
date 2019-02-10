@@ -13,7 +13,7 @@ export class UsersService{
 			email: 'juanpchica@hotmail.com',
 			friend: true,
 			id:1,
-			avatar:'../../assets/imgs/pic1.jpg'
+			avatar:'assets/imgs/pic1.jpg'
 		},
 		{	
 			nick : 'Luis Felipe',
@@ -21,7 +21,7 @@ export class UsersService{
 			email: 'pipe@hotmail.com',
 			friend: true,
 			id:2,
-			avatar:'../../assets/imgs/pic2.jpg'
+			avatar:'assets/imgs/pic2.jpg'
 		},
 		{
 			nick : 'Nicolas',
@@ -29,7 +29,7 @@ export class UsersService{
 			email: 'nico@hotmail.com',
 			friend: false,
 			id:3,
-			avatar:'../../assets/imgs/pic2.jpg'
+			avatar:'assets/imgs/pic2.jpg'
 		},
 		{
 			nick : 'Fernando',
@@ -37,7 +37,7 @@ export class UsersService{
 			email: 'fernando@hotmail.com',
 			friend: true,
 			id:4,
-			avatar:'../../assets/imgs/pic1.jpg'
+			avatar:'assets/imgs/pic1.jpg'
 		},
 		{
 			nick : 'Martha',
@@ -45,7 +45,7 @@ export class UsersService{
 			email: 'martha@hotmail.com',
 			friend: false,
 			id:5,
-			avatar:'../../assets/imgs/pic1.jpg'
+			avatar:'assets/imgs/pic1.jpg'
 		}
 	];
 
