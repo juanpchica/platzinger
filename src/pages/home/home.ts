@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 import { UsersService } from '../../services/users';
+import { User } from '../../interfaces/user'; ///Interfaz de usuario
 
 /**
  * Generated class for the HomePage page.
@@ -18,9 +19,9 @@ import { UsersService } from '../../services/users';
 })
 export class HomePage {
 
-	users:any;
+	users:User[];
 	constructor(public navCtrl: NavController, public navParams: NavParams, public usersService: UsersService) {
-		this.users = usersService.getUsers();
+		this.initializeItems();
 	}
 
 	ionViewDidLoad() {
@@ -30,5 +31,27 @@ export class HomePage {
 
 	verUsuario(id:number){
   		this.navCtrl.push('ConversationPage',{id:id});
+	}
+
+	// Reset items back to all of the items
+	initializeItems(){
+		this.users = this.usersService.getUsers();
+	}
+
+	//Filtro por usuario segun lo escrito en el buscador
+	getUsers(ev){
+		
+		// Reset items back to all of the items
+	    this.initializeItems();
+
+	    // set val to the value of the ev target
+	    var val = ev.target.value;
+
+	    // if the value is an empty string don't filter the items
+	    if (val && val.trim() != '') {
+	      this.users = this.users.filter((item) => {
+	        return (item.nick.toLowerCase().indexOf(val.toLowerCase()) > -1);
+	      })
+	    }
 	}
 }

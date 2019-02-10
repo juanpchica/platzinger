@@ -19,7 +19,8 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+	<ion-searchbar (ionInput)="getUsers($event)"></ion-searchbar>
 	<ion-list>
 		<ion-list-header><strong>Amigos</strong></ion-list-header>
 		<div *ngFor="let user of users; let i = index;">

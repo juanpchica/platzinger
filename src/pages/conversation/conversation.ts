@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { UsersService } from '../../services/users';
+import { User } from '../../interfaces/user'; ///Interfaz de usuario
 
 
 /**
@@ -18,7 +19,7 @@ import { UsersService } from '../../services/users';
 })
 export class ConversationPage {
 
-	user:Object = {};
+	user: User;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public usersService: UsersService) {
 		
