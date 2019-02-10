@@ -51,11 +51,10 @@
 		</div>
 		<div>
 			<div class="contact-list-item" [ngClass]="{'contact-offline': user.status == 'Desconectado' ||  user.status == 'NoMolestar'}" *ngFor="let user of users" (click)="goToConversation(user.id)">
-				<img src="assets/img/logo_live_online.png" class="status">
+				<img src="assets/img/{{getImageStatus(user.status)}}.png" class="status">
 				<b>{{user.nick}}</b>
 				<small *ngIf="user.status">{{user.status}}</small>
 			</div>
 		</div>
 	</div>
-
 </ion-content>

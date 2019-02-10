@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ItemSliding, AlertController } fro
 
 
 import { UsersService } from '../../services/users';
-import { User } from '../../interfaces/user'; ///Interfaz de usuario
+import { User, Status } from '../../interfaces/user'; ///Interfaz de usuario
 
 /**
  * Generated class for the HomePage page.
@@ -90,4 +90,33 @@ export class HomePage {
 	    });
 	    confirm.present();
 	}
+
+	//Valido el nombre de la imagen segun el estado del usuario
+	getImageStatus(status: Status){
+		let icon:string = '';
+
+		switch (status) {
+			case Status.AppearOffline:
+					icon = "logo_live_appear_offline";
+				break;
+				
+			case Status.Away:
+					icon = "logo_live_away";
+				break;
+
+			case Status.Busy:
+					icon = "logo_live_busy";
+				break;
+
+			case Status.Offline:
+					icon = "logo_live_offline";
+				break;
+
+			case Status.Online:
+					icon = "logo_live_online";
+				break;
+		}
+		return icon;
+	}
+
 }
