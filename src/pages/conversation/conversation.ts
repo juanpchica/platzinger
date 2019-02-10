@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { UsersService } from '../../services/users';
+
+
 /**
  * Generated class for the ConversationPage page.
  *
@@ -15,11 +18,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ConversationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	user:Object = {};
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ConversationPage');
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams, public usersService: UsersService) {
+		
+		//Obtengo el usuario seleccionado
+		this.user = usersService.getUser(navParams.get('id'));
+		console.log(this.user);
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad ConversationPage');
+	}
+
+
 
 }
