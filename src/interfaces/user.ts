@@ -8,4 +8,13 @@ export interface User{
 	friend: boolean;
 	id: any;
 	avatar:string;
+	status: Status
+}
+
+export enum Status {
+	Online = "Disponible",
+	Offline = "Desconectado",
+	Away = "Ausente",
+	Busy = "Ocupado",
+	AppearOffline = "No molestar"
 }

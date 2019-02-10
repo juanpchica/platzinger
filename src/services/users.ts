@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import { User } from '../interfaces/user'; ///Interfaz de usuario
+import { User, Status } from '../interfaces/user'; ///Interfaz de usuario
 
 
 @Injectable()
@@ -13,7 +13,8 @@ export class UsersService{
 			email: 'juanpchica@hotmail.com',
 			friend: true,
 			id:1,
-			avatar:'assets/imgs/pic1.jpg'
+			avatar:'assets/imgs/pic1.jpg',
+			status: Status.Online
 		},
 		{	
 			nick : 'Luis Felipe',
@@ -21,7 +22,8 @@ export class UsersService{
 			email: 'pipe@hotmail.com',
 			friend: true,
 			id:2,
-			avatar:'assets/imgs/pic2.jpg'
+			avatar:'assets/imgs/pic2.jpg',
+			status: Status.Online
 		},
 		{
 			nick : 'Nicolas',
@@ -29,7 +31,8 @@ export class UsersService{
 			email: 'nico@hotmail.com',
 			friend: false,
 			id:3,
-			avatar:'assets/imgs/pic2.jpg'
+			avatar:'assets/imgs/pic2.jpg',
+			status: Status.Busy
 		},
 		{
 			nick : 'Fernando',
@@ -37,7 +40,8 @@ export class UsersService{
 			email: 'fernando@hotmail.com',
 			friend: true,
 			id:4,
-			avatar:'assets/imgs/pic1.jpg'
+			avatar:'assets/imgs/pic1.jpg',
+			status: Status.Offline
 		},
 		{
 			nick : 'Martha',
@@ -45,7 +49,8 @@ export class UsersService{
 			email: 'martha@hotmail.com',
 			friend: false,
 			id:5,
-			avatar:'assets/imgs/pic1.jpg'
+			avatar:'assets/imgs/pic1.jpg',
+			status: Status.Away
 		}
 	];
 

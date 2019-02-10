@@ -23,7 +23,7 @@
 </ion-header>
 
 
-<ion-content  class="backgroundAmsnImg bluewhitebluebg">
+<ion-content padding class="backgroundAmsnImg bluewhitebluebg">
 
 	<ion-grid id="homeMeContainer" padding>
 		<ion-row>
@@ -40,51 +40,22 @@
 		</ion-row>
 	</ion-grid>
 
+    <div class="searchBoxContainer">
+		<ion-searchbar (ionInput)="getUsers($event)" id="searchField" placeholder="Busca entre tus contactos"></ion-searchbar>
+	</div>
 
-	<ion-searchbar (ionInput)="getUsers($event)"></ion-searchbar>
-	<ion-list>
-		<ion-list-header color="light">
-			<strong>Amigos</strong>
-		</ion-list-header>
-
-		<div *ngFor="let user of users">
-			<ion-item-sliding #slideItem *ngIf="user.friend">
-				<ion-item (click)="verUsuario(user.id)">
-					<ion-avatar item-start>
-								<img src="{{user.avatar}}">
-						</ion-avatar>
-						<h2>{{user.nick}}</h2>
-						<p>{{user.email}}</p>
-					
-				</ion-item>
-			
-					<ion-item-options side="right">
-					<button ion-button color="danger" (click)="deleteUser(user,slideItem)">
-						<ion-icon name="trash"></ion-icon>
-						Borrar
-					</button>
-					</ion-item-options>
-			</ion-item-sliding>
+	<div>
+		<div padding-vertical>
+			<ion-icon name="arrow-down"></ion-icon>
+			<b>Amigos ({{users.length}}/{{users.length}})</b>
 		</div>
-	</ion-list>
-
-	<ion-list>
-		<ion-list-header color="light">
-			<strong>No Amigos</strong>
-		</ion-list-header>
-
-		<div *ngFor="let user of users">
-			<ion-item *ngIf="!user.friend" (click)="verUsuario(user.id)">
-				<ion-avatar item-start>
-							<img src="{{user.avatar}}">
-					</ion-avatar>
-
-					<ion-label>
-						<h2>{{user.nick}}</h2>
-						<p>{{user.email}}</p>
-					</ion-label>
-					<ion-icon name="person-add" item-end color="primary" (click)="addUser(user)"></ion-icon>
-			</ion-item>	
+		<div>
+			<div class="contact-list-item" *ngFor="let user of users" (click)="goToConversation(user.id)">
+				<img src="assets/img/logo_live_online.png" class="status">
+				<b>{{user.nick}}</b>
+				<small *ngIf="user.status">{{user.status}}</small>
+			</div>
 		</div>
-	</ion-list>
+	</div>
+
 </ion-content>
