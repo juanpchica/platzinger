@@ -6,21 +6,45 @@
 -->
 <ion-header>
 
-	<ion-navbar>
+	<ion-navbar color="primary">
 		<button ion-button icon-only menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
 
 		<ion-title>
-			Conversation
+			{{user.nick}}
 		</ion-title>
-
 	</ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-{{user | json}}
+<ion-content padding class="backgroundAmsnImg">
+		<ion-fab right middle>
+			<button ion-fab color="primary"><ion-icon name="send"></ion-icon></button>
+			<ion-fab-list side="top">
+				<button ion-fab outline>
+					<img src="assets/img/zumbido.png">
+				</button>
+			</ion-fab-list>
+			<ion-fab-list side="bottom">
+				<button ion-fab color="dark">
+					<ion-icon name="camera"></ion-icon>
+				</button>
+				<button ion-fab color="dark">
+					<ion-icon name="images"></ion-icon>
+				</button>
+			</ion-fab-list>
+		</ion-fab>
 </ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<ion-input type="text" autofocus class="footbarInput"></ion-input>
+		<ion-buttons end>
+			<button ion-button icon-only color="royal">
+				<ion-icon name="send"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>
 

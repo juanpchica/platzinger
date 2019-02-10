@@ -33,7 +33,7 @@ export class HomePage {
 		console.log('ionViewDidLoad HomePage');
 	}
 
-	verUsuario(id:number){
+	goToConversation(id:number){
   		this.navCtrl.push('ConversationPage',{id:id});
 	}
 
