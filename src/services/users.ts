@@ -12,35 +12,40 @@ export class UsersService{
 			age: 24,
 			email: 'juanpchica@hotmail.com',
 			friend: true,
-			id:1
+			id:1,
+			avatar:'../../assets/imgs/pic1.jpg'
 		},
-		{
+		{	
 			nick : 'Luis Felipe',
 			age: 27,
 			email: 'pipe@hotmail.com',
 			friend: true,
-			id:2
+			id:2,
+			avatar:'../../assets/imgs/pic2.jpg'
 		},
 		{
 			nick : 'Nicolas',
 			age: 10,
 			email: 'nico@hotmail.com',
 			friend: false,
-			id:3
+			id:3,
+			avatar:'../../assets/imgs/pic2.jpg'
 		},
 		{
 			nick : 'Fernando',
 			age:52,
 			email: 'fernando@hotmail.com',
 			friend: true,
-			id:4
+			id:4,
+			avatar:'../../assets/imgs/pic1.jpg'
 		},
 		{
 			nick : 'Martha',
 			age: 45,
 			email: 'martha@hotmail.com',
 			friend: false,
-			id:5
+			id:5,
+			avatar:'../../assets/imgs/pic1.jpg'
 		}
 	];
 

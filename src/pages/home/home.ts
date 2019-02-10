@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ItemSliding, AlertController } from 'ionic-angular';
 
 
 import { UsersService } from '../../services/users';
@@ -20,14 +20,18 @@ import { User } from '../../interfaces/user'; ///Interfaz de usuario
 export class HomePage {
 
 	users:User[];
-	constructor(public navCtrl: NavController, public navParams: NavParams, public usersService: UsersService) {
+	constructor(
+		public navCtrl: NavController, 
+		public navParams: NavParams, 
+		public usersService: UsersService,
+		public alertCtrl: AlertController
+	) {
 		this.initializeItems();
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad HomePage');
 	}
-
 
 	verUsuario(id:number){
   		this.navCtrl.push('ConversationPage',{id:id});
@@ -53,5 +57,37 @@ export class HomePage {
 	        return (item.nick.toLowerCase().indexOf(val.toLowerCase()) > -1);
 	      })
 	    }
+	}
+
+	//Agrego usuario a los amigos
+	addUser(user:User){
+		user.friend = true;
+	}
+
+	//Borro usuario de mis amigos
+	deleteUser(user:User,slideItem:ItemSliding){
+		const confirm = this.alertCtrl.create({
+			title: 'Eliminar Amigo?',
+			message: 'Estas seguro que deseas eliminar de tus amigos a '+ user.nick+' ?',
+			buttons: [
+				{
+					text: 'Cancelar',
+						handler: () => {
+
+						//Cierro el slideItem que abrí
+						slideItem.close();
+					}
+				},
+				{
+					text: 'Elminar',
+						handler: () => {
+
+						//Ya no es amigo
+						user.friend = false;
+					}
+				}
+			]
+	    });
+	    confirm.present();
 	}
 }

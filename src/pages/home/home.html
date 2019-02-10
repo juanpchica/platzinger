@@ -22,20 +22,48 @@
 <ion-content>
 	<ion-searchbar (ionInput)="getUsers($event)"></ion-searchbar>
 	<ion-list>
-		<ion-list-header><strong>Amigos</strong></ion-list-header>
-		<div *ngFor="let user of users; let i = index;">
-			<ion-item *ngIf="user.friend" (click)="verUsuario(user.id)">
-				{{user.nick}}
-			</ion-item>			
+		<ion-list-header>
+			<strong>Amigos</strong>
+		</ion-list-header>
+
+		<div *ngFor="let user of users">
+			<ion-item-sliding #slideItem *ngIf="user.friend">
+				<ion-item (click)="verUsuario(user.id)">
+					<ion-avatar item-start>
+				      	<img src="{{user.avatar}}">
+				    </ion-avatar>
+				    <h2>{{user.nick}}</h2>
+				    <p>{{user.email}}</p>
+					
+				</ion-item>
+			
+			    <ion-item-options side="right">
+					<button ion-button color="danger" (click)="deleteUser(user,slideItem)">
+						<ion-icon name="trash"></ion-icon>
+						Borrar
+					</button>
+			    </ion-item-options>
+			</ion-item-sliding>
 		</div>
 	</ion-list>
 
 	<ion-list>
-		<ion-list-header><strong>No Amigos</strong></ion-list-header>
+		<ion-list-header>
+			<strong>No Amigos</strong>
+		</ion-list-header>
+
 		<div *ngFor="let user of users">
 			<ion-item *ngIf="!user.friend" (click)="verUsuario(user.id)">
-				{{user.nick}}
-			</ion-item>			
+				<ion-avatar item-start>
+			      	<img src="{{user.avatar}}">
+			    </ion-avatar>
+
+			    <ion-label>
+			    	<h2>{{user.nick}}</h2>
+			    	<p>{{user.email}}</p>
+			    </ion-label>
+			    <ion-icon name="person-add" item-end color="primary" (click)="addUser(user)"></ion-icon>
+			</ion-item>	
 		</div>
 	</ion-list>
 </ion-content>
