@@ -16,5 +16,5 @@ export enum Status {
 	Offline = "Desconectado",
 	Away = "Ausente",
 	Busy = "Ocupado",
-	AppearOffline = "No molestar"
+	AppearOffline = "NoMolestar"
 }

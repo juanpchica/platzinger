@@ -16,7 +16,7 @@ page-home {
         padding: 0px 5px;
     }
     .contact-list-item {
-        margin-bottom: 3px;
+        padding: 5px;
         cursor: pointer;
     }
     .contact-list-item > .status {
@@ -25,5 +25,9 @@ page-home {
     }
     #searchField input {
         background: #e2f3fc;
+    }
+    .contact-offline {
+        background: #cac4c4;
+        color: #e60a0a;
     }
 }
