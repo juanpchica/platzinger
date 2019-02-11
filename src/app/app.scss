@@ -100,3 +100,44 @@
 .icon-in-button {
   width: 30px;
 }
+
+.input-form ion-label {
+  margin: 0px;
+}
+.input-form ion-icon {
+  font-size: 1.5em;
+  color: gray;
+}
+.input-form {
+  background: #edf3f5;
+  margin-bottom: 15px;
+  border: 1px solid #6bc5f2 !important;
+}
+.input-form-check {
+  font-size: 1em;
+  color: #777171;
+}
+a.col-gray {
+  color: gray;
+}
+h2.title {
+  position: relative;
+  color: #063248;
+  margin: 1em 0 1.5em 0 !important;
+}
+h2.title::after {
+  content: "";
+  width: 80px;
+  height: 2px;
+  background: #2c6481;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+}
+.bposy0 {
+  background-position-y: 0px !important;
+}
+.avatarLogin {
+  margin-bottom: 30px;
+}

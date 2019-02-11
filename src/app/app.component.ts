@@ -10,7 +10,7 @@ export class MyApp {
     
     //Para poder agregar la navegacion aca
     @ViewChild(Nav) nav: Nav;
-    rootPage:any = 'HomePage';
+    rootPage:any = 'LoginPage';
 
     //Arreglo con las paginas y titulos y nombre del componente para usar en el menu
     pages: Array<{title:string,component:any}>;
