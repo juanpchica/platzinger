@@ -8,6 +8,20 @@ import { MyApp } from './app.component';
 
 //Services
 import { UsersService } from '../services/users';
+import { AuthService } from '../services/auth';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBpQukp6uwIE5ptluyzNx6oHTf_e907kXs",
+  authDomain: "platzinger-644ec.firebaseapp.com",
+  databaseURL: "https://platzinger-644ec.firebaseio.com",
+  projectId: "platzinger-644ec",
+  storageBucket: "platzinger-644ec.appspot.com",
+  messagingSenderId: "264143202049"
+};
 
 @NgModule({
   declarations: [
@@ -15,7 +29,10 @@ import { UsersService } from '../services/users';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -25,6 +42,8 @@ import { UsersService } from '../services/users';
     StatusBar,
     SplashScreen,
     UsersService,
+    AngularFireDatabase,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
