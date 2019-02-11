@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../services/auth';
+import { UsersService } from '../../services/users';
+
+import { User, Status } from '../../interfaces/user'; ///Interfaz de usuario
 
 /**
  * Generated class for the RegisterPage page.
@@ -25,7 +28,8 @@ export class RegisterPage {
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
-		public authService: AuthService
+		public authService: AuthService,
+		public userService: UsersService
 		) {
 	}
 
@@ -39,11 +43,34 @@ export class RegisterPage {
 
 	signUp(){
 		let user = this.userData;
-		if(user.mail != '' && user.password != '' && user.passwordConfirm != ''){
+		if(user.mail != '' && user.password != '' && user.passwordConfirm != ''  && user.nick != ''){
 			if(user.password == user.passwordConfirm){
 				//Registro el usuario
 				this.authService.registerWithEmail(user.mail,user.password)
 					.then((data)=>{
+						
+						//Si el usuario es nuevo lo creo
+						if(data.additionalUserInfo.isNewUser){
+							
+							//Creo el nuevo usuario en la db
+							const userNew : User ={
+								nick: user.nick,
+								email: user.mail,
+								friend: true,
+								status: Status.Online,
+								avatar: 'assets/img/logo_live_online.png',
+								id: data.user.uid
+							}
+
+							//Agrego el usuario nuevo
+							this.userService.add(userNew).then(()=>{
+								console.log("Usuario creado correctamente");
+							}).catch(err=>console.log(err));
+
+						}else{
+							console.log("Este usuario ya existe");
+						}
+					
 						console.log(data);
 					})
 					.catch( err => console.log(err));

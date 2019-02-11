@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import { User, Status } from '../interfaces/user'; ///Interfaz de usuario
+import { AngularFireDatabase } from "@angular/fire/database";
 
 
 @Injectable()
@@ -54,7 +55,7 @@ export class UsersService{
 		}
 	];
 
-	constructor(){}
+	constructor(private afDB: AngularFireDatabase){}
 
 	//Retorno los usuarios
 	getUsers(){
@@ -63,5 +64,10 @@ export class UsersService{
 
 	getUser(id:number){
 		return this.getUsers().find( item => item.id == id );
+	}
+
+	//Agregar nuevo usuario en la base de datos
+	add(user:User){
+		return this.afDB.object('/users/'+user.id).set(user);
 	}
 }
