@@ -10,4 +10,8 @@ export class AuthService{
     loginWithEmail(email,password){
         return this.firebaseAuth.auth.signInWithEmailAndPassword(email,password);
     }
+
+    registerWithEmail(email,password){
+        return this.firebaseAuth.auth.createUserWithEmailAndPassword(email,password);
+    }
 }
