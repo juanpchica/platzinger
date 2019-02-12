@@ -37,6 +37,16 @@
 
 
 		<button ion-button block color="blueDark" padding-vertical (click)="signIn()">Sign in</button>
+		<button ion-button block class="btn-facebook" icon-start margin-top (click)="signInWithFacebook()">
+			<ion-icon name="logo-facebook"></ion-icon>
+			Login with Facebook
+		</button>
+
+		<button ion-button block class="btn-twitter" icon-start margin-top>
+			<ion-icon name="logo-twitter"></ion-icon>
+			Login with Twitter
+		</button>
+
 
 		<div class="link-text-info" padding text-center>
 			<a (click)="goToRegister()" class="col-gray">New here? Sing Up</a>

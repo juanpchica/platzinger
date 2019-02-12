@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {AngularFireAuth} from "angularfire2/auth";
+import firebase from 'firebase/app'; // Importo tambien para usar facebook
 
 @Injectable()
 export class AuthService{
@@ -14,4 +15,10 @@ export class AuthService{
     registerWithEmail(email,password){
         return this.firebaseAuth.auth.createUserWithEmailAndPassword(email,password);
     }
+
+    //Creo metodo para iniciar sesion con facebook
+    loginWithFacebook(){
+        return this.firebaseAuth.auth.signInWithPopup( new firebase.auth.FacebookAuthProvider());
+    }
+
 }

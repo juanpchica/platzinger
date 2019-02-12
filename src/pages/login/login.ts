@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../services/auth';
+import { User, Status } from '../../interfaces/user'; ///Interfaz de usuario
+import { UsersService } from '../../services/users';
 
 /**
  * Generated class for the LoginPage page.
@@ -24,7 +26,8 @@ export class LoginPage {
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
-		public authService: AuthService
+		public authService: AuthService,
+		public userService: UsersService
 		) {
 	}
 
@@ -49,6 +52,30 @@ export class LoginPage {
 		}
     }
 
+	signInWithFacebook(){
+		this.authService.loginWithFacebook().then((data)=>{
+			console.log(data);
+
+			//Valido si es usuario nuevo y lo registro en mi database
+			if(data.additionalUserInfo.isNewUser){
+				const user: User = {
+					nick: data.user.displayName,
+					email: data.user.email,
+					id: data.user.uid,
+					status: Status.Online,
+					friend: true,
+					avatar: data.user.photoURL
+				};
+
+				//Agrego el usuario a la base de datos
+				this.userService.add(user)
+					.then(data=>console.log(data))
+					.catch(err=>console.log(err))
+			}else{
+				console.log("este usuario ya existe");
+			}
+		}).catch(err=>console.log(err));
+	}
 
 	//Muestro los errores del login
 	errorLog(err){
