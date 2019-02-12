@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ItemSliding, AlertController } fro
 
 import { UsersService } from '../../services/users';
 import { User, Status } from '../../interfaces/user'; ///Interfaz de usuario
+import { AuthService } from '../../services/auth';
 
 /**
  * Generated class for the HomePage page.
@@ -24,9 +25,12 @@ export class HomePage {
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
 		public usersService: UsersService,
-		public alertCtrl: AlertController
+		public alertCtrl: AlertController,
+		public authService: AuthService
 	) {
+
 		this.initializeItems();
+
 	}
 
 	ionViewDidLoad() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthService } from '../../services/auth';
 import { UsersService } from '../../services/users';
 
@@ -29,7 +29,8 @@ export class RegisterPage {
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
 		public authService: AuthService,
-		public userService: UsersService
+		public userService: UsersService,
+		public toastCtrl:ToastController
 		) {
 	}
 
@@ -65,6 +66,15 @@ export class RegisterPage {
 							//Agrego el usuario nuevo
 							this.userService.add(userNew).then(()=>{
 								console.log("Usuario creado correctamente");
+								
+								//Creo mensaje de registro correcto
+								const toast = this.toastCtrl.create({
+									message: `Usuario registrado con exito`,
+									duration: 3000
+								});
+								toast.present();
+								this.navCtrl.setRoot('HomePage');
+
 							}).catch(err=>console.log(err));
 
 						}else{

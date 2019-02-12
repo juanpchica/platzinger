@@ -21,4 +21,13 @@ export class AuthService{
         return this.firebaseAuth.auth.signInWithPopup( new firebase.auth.FacebookAuthProvider());
     }
 
+    //Obtengo el estado actual de la sesion
+    getStatus(){
+        return this.firebaseAuth.authState;
+    }
+
+    //Cierro la sesion
+    logout(){
+        return this.firebaseAuth.auth.signOut();
+    }
 }

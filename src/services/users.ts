@@ -70,4 +70,8 @@ export class UsersService{
 	add(user:User){
 		return this.afDB.object('/users/'+user.id).set(user);
 	}
+	
+	get(id){
+		return this.afDB.object('/users/'+id);
+	}
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthService } from '../../services/auth';
 import { User, Status } from '../../interfaces/user'; ///Interfaz de usuario
 import { UsersService } from '../../services/users';
@@ -27,7 +27,8 @@ export class LoginPage {
 		public navCtrl: NavController, 
 		public navParams: NavParams, 
 		public authService: AuthService,
-		public userService: UsersService
+		public userService: UsersService,
+		public toastCtrl: ToastController
 		) {
 	}
 
@@ -46,6 +47,17 @@ export class LoginPage {
 				this.authService.loginWithEmail(this.dataUser.mail,this.dataUser.password)
 				.then((data)=>{
 					console.log(data);
+
+					//let userLogged = this.userService.get(data.user.uid).valueChanges();
+					//console.log(userLogged);
+
+					//Creo mensaje de logueo correctamente
+					const toast = this.toastCtrl.create({
+						message: `Bienvenido de nuevo`,
+						duration: 3000
+					});
+					toast.present();
+					this.navCtrl.setRoot('HomePage');
 				}).catch( err => console.log(this.errorLog(err),err) );
 		}else{
 			console.log("llena todos los campos");
@@ -70,9 +82,26 @@ export class LoginPage {
 				//Agrego el usuario a la base de datos
 				this.userService.add(user)
 					.then(data=>console.log(data))
-					.catch(err=>console.log(err))
+					.catch(err=>console.log(err));
+
+				//Creo mensaje de logueo correctamente
+				const toast = this.toastCtrl.create({
+					message: `Bienvenido eres nuevo usuario de facebook`,
+					duration: 3000
+				});
+				toast.present();
+				this.navCtrl.setRoot('HomePage');
+
 			}else{
 				console.log("este usuario ya existe");
+
+				//Creo mensaje de logueo correctamente
+				const toast = this.toastCtrl.create({
+					message: `Bienvenido de nuevo usuario de facebook`,
+					duration: 3000
+				});
+				toast.present();
+				this.navCtrl.setRoot('HomePage');
 			}
 		}).catch(err=>console.log(err));
 	}
